@@ -12,7 +12,11 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         //
+        $middleware->validateCsrfTokens(except: [
+            'webhook',
+        ]);
     })
+
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();
